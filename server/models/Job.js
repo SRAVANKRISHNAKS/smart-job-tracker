@@ -6,38 +6,20 @@ const jobSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-
     role: {
       type: String,
       required: true
     },
-
     status: {
       type: String,
-
-      enum: [
-        'Applied',
-        'Interview',
-        'Rejected',
-        'Offer'
-      ],
-
+      enum: [ 'Applied', 'Interview', 'Rejected', 'Offer'],
       default: 'Applied'
     },
 
     user: {
       type: mongoose.Schema.Types.ObjectId,
-
       ref: 'User'
     }
-  },
+  }, { timestamps: true });
 
-  {
-    timestamps: true
-  }
-);
-
-export default mongoose.model(
-  'Job',
-  jobSchema
-);
+export default mongoose.model('Job', jobSchema);

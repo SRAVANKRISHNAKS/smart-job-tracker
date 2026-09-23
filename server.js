@@ -16,25 +16,17 @@ app.use(express.json());
 
 app.use('/uploads', express.static('uploads'));
 
-
 app.use('/api/auth', authRoutes);
-
 app.use('/api/jobs', jobRoutes);
-
 app.use('/api/resume', resumeRoutes);
 
-
-mongoose
-  .connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
-
-
 
 app.get('/', (req, res) => {
   res.send('API Running');
 });
-
 
 const PORT = process.env.PORT || 5000;
 
